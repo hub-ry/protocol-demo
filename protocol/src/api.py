@@ -1,0 +1,69 @@
+from flask import Flask, request, jsonify
+from datetime import datetime
+import json
+import os
+
+# Create the Flask web server
+app = Flask(__name__)
+
+# File where all weight data is stored
+DATA_FILE = "data.json"
+
+
+# Health check endpoint (just to see if server is running)
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"status": "server running"})
+
+
+# Endpoint to add a new weight entry
+@app.route("/add_weight", methods=["POST"])
+def add_weight():
+    # Read JSON data sent in the request body
+    data = request.get_json()
+
+    # Make sure a weight was provided
+    if data is None or "weight" not in data:
+        return jsonify({"error": "No weight provided"}), 400
+
+    # Create a new weight entry
+    weight_entry = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "weight": data["weight"]
+    }
+
+    # Load existing data if the file exists
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, "r") as f:
+            all_data = json.load(f)
+    else:
+        all_data = []
+
+    # Add the new entry
+    all_data.append(weight_entry)
+
+    # Save updated data back to the file
+    with open(DATA_FILE, "w") as f:
+        json.dump(all_data, f, indent=2)
+
+    # Send confirmation back to the client
+    return jsonify({"status": "ok", "entry": weight_entry})
+
+
+# Endpoint to get all stored weight entries
+@app.route("/get_weights", methods=["GET"])
+def get_weights():
+    # If no data file exists yet, return empty list
+    if not os.path.exists(DATA_FILE):
+        return jsonify({"weights": []})
+
+    # Load and return all stored data
+    with open(DATA_FILE, "r") as f:
+        all_data = json.load(f)
+
+    return jsonify({"weights": all_data})
+
+
+# Start the server (accessible via Tailscale)
+if __name__ == "__main__":
+    app.run(host="100.89.197.38", port=5002)

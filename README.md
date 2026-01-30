@@ -13,3 +13,16 @@ The vision of this application is to track as much data about myself as possible
 
 #### Graphing and gathering data
 I will graph this data and analyze the results.
+
+
+#### Tech Stack
+
+- Python 
+  - Pandas
+  - matplotlib
+  - pydantic
+  
+- FastAPI
+- Virtual Environment
+- Apple Shortcuts for sending user data
+- Tailscale + Server for network tunnelling and recieving data

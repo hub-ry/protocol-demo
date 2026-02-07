@@ -6,6 +6,6 @@ data/
 
 __pycache__/
 
+auth.env
 .env
-
 

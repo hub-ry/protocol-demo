@@ -26,3 +26,8 @@ I will graph this data and analyze the results.
 - Virtual Environment
 - Apple Shortcuts for sending user data
 - Tailscale + Server for network tunnelling and recieving data
+
+---
+Personal Notes:
+
+``venv/bin/uvicorn src.main:app --host 0.0.0.0 --port 5000``

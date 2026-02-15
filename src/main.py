@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from datetime import datetime
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware 
 import json
 import os
@@ -52,3 +53,6 @@ async def get_weights():
         with open(weight_log, "r") as f:
             return json.load(f)
     return [] 
+
+
+app.mount("/", StaticFiles(directory="./frontend/.svelte-kit/output/client", html=True), name="static")

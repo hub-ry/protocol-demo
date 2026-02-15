@@ -6,15 +6,15 @@
   import { onMount } from "svelte";
 
   let currentTime = "";
+  let userName = "";
+  let mainView = "weight"; 
+
+  // hardcode for now bc i am the only user
+  userName = "ryan";
 
   onMount(() => {
-    // Update time immediately
     updateTime();
-
-    // Update every second
     const interval = setInterval(updateTime, 1000);
-
-    // Cleanup when component is destroyed
     return () => clearInterval(interval);
   });
 
@@ -24,7 +24,12 @@
   }
 </script>
 
-<div class="bar hover:brightness-110 transition pl-2">{currentTime}</div>
+<div class="bar hover:brightness-110 transition pl-2">
+  {currentTime}
+  <div class="pr-2">
+    user: {userName}
+  </div>
+</div>
 
 <div class="cards">
   <Stats />
@@ -46,6 +51,8 @@
     box-shadow:
       0 4px 6px rgba(0, 0, 0, 0.2),
       0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
   }
   .cards {
     display: flex;

@@ -2,27 +2,46 @@
   import { onMount } from "svelte";
 
   let weights = [];
+  let firstDate = "Loading...";
+  let currDate = "Loading...";
+  let daysDifference = "Loading...";
 
   onMount(async () => {
     const res = await fetch("http://localhost:5001/weights");
     weights = await res.json();
+    // Set firstDate after data loads
+    if (weights.length > 0) {
+      firstDate = weights[0].date;
+      currDate = new Date();
+      currDate = new Date().toLocaleDateString(); // e.g., "2/15/2026"
+      currDate = new Date().toISOString().split("T")[0]; // e.g., "2026-02-15"
+      const start = new Date(firstDate);
+      const end = new Date(currDate);
+      daysDifference = Math.floor((end - start) / (1000 * 60 * 60 * 24));
+    }
   });
   $: latestWeight = weights[weights.length - 1];
+
+  function getDaysPassed() {}
 </script>
 
 <div class="stats-box hover:brightness-110 transition">
   <div class="relative h-full">
     <div class="grid grid-cols-2 gap-2 p-2">
-      <p class="stat-button text-yellow-400">Locked-In:</p>
-      <p class="stat-button text-yellow-400">100%</p>
+      <p class="stat-button text-yellow-400">Start-Date:</p>
+      <p class="stat-button text-yellow-400">{firstDate}</p>
+      <p class="stat-button text-yellow-400">Curr-Date:</p>
+      <p class="stat-button text-yellow-400">{currDate}</p>
+      <p class="stat-button text-yellow-400">Days Elapsed:</p>
+      <p class="stat-button text-yellow-400">{daysDifference}</p>
+      <p class="stat-button text-yellow-400">Status:</p>
+      <p class="stat-button text-yellow-400">Cutting</p>
       <p class="stat-button text-yellow-400">current-weight:</p>
       <p class="stat-button text-yellow-400">
         {latestWeight?.weight || "--"} lbs
       </p>
       <p class="stat-button text-yellow-400">goal-weight</p>
       <p class="stat-button text-yellow-400">200 lbs</p>
-      <p class="stat-button text-yellow-400">Exercise %:</p>
-      <p class="stat-button text-yellow-400">90%</p>
     </div>
 
     <p class="absolute right-0 bottom-0 pr-2 text-gray-600">stats</p>

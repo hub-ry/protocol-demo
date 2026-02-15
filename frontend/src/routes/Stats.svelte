@@ -12,8 +12,18 @@
 
 <div class="stats-box hover:brightness-110 transition">
   <div class="relative h-full">
-    <p class="text-2xl text-white">{latestWeight?.weight || "--"} lbs</p>
-    <div bind:this={chartDiv}></div>
+    <div class="grid grid-cols-2 gap-2 p-2">
+      <p class="stat-button text-yellow-400">Locked-In:</p>
+      <p class="stat-button text-yellow-400">100%</p>
+      <p class="stat-button text-yellow-400">current-weight:</p>
+      <p class="stat-button text-yellow-400">
+        {latestWeight?.weight || "--"} lbs
+      </p>
+      <p class="stat-button text-yellow-400">goal-weight</p>
+      <p class="stat-button text-yellow-400">200 lbs</p>
+      <p class="stat-button text-yellow-400">Exercise %:</p>
+      <p class="stat-button text-yellow-400">90%</p>
+    </div>
 
     <p class="absolute right-0 bottom-0 pr-2 text-gray-600">stats</p>
   </div>
@@ -21,7 +31,7 @@
 
 <style>
   .stats-box {
-    border: 0.1px solid rgb(65, 68, 69); 
+    border: 0.1px solid rgb(65, 68, 69);
     background-color: rgb(34, 38, 44);
     width: 21vw;
     height: 50vh;
@@ -34,5 +44,13 @@
     box-shadow:
       0 4px 6px rgba(0, 0, 0, 0.3),
       0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .stat-button {
+    position: relative;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 5px;
+    padding: 2px;
   }
 </style>

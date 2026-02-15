@@ -3,26 +3,25 @@
   import Stats from "./Stats.svelte";
   import Future from "./Future.svelte";
 
-    import { onMount } from 'svelte';
-  
-  let currentTime = '';
-  
+  import { onMount } from "svelte";
+
+  let currentTime = "";
+
   onMount(() => {
     // Update time immediately
     updateTime();
-    
+
     // Update every second
     const interval = setInterval(updateTime, 1000);
-    
+
     // Cleanup when component is destroyed
     return () => clearInterval(interval);
   });
-  
+
   function updateTime() {
     const now = new Date();
     currentTime = now.toLocaleTimeString();
   }
-
 </script>
 
 <div class="bar hover:brightness-110 transition pl-2">{currentTime}</div>
@@ -35,7 +34,7 @@
 
 <style>
   .bar {
-    border: 0.01px, rgb(98, 101, 103), solid;
+    border: 0.01px solid rgb(98, 101, 103);
     border-radius: 3px;
     width: 80vw;
 
@@ -44,7 +43,7 @@
     margin-bottom: 15vh;
     background-color: rgb(34, 38, 44);
     color: rgb(107, 111, 121);
-     box-shadow:
+    box-shadow:
       0 4px 6px rgba(0, 0, 0, 0.2),
       0 1px 3px rgba(0, 0, 0, 0.1);
   }

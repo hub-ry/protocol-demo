@@ -38,6 +38,8 @@ def plot_weight(df):
   plt.tight_layout()
   plt.show()
 
+  plt.savefig("chart.png")
+  plt.close()
 
 def main():
   df = load_data()

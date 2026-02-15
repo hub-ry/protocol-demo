@@ -1,10 +1,20 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from datetime import datetime
+from fastapi.middleware.cors import CORSMiddleware 
 import json
 import os
 
 app = FastAPI()
+
+
+# Temporarily allow all origins (for my local dev)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class WeightEntry(BaseModel):
   weight: float
@@ -34,3 +44,11 @@ async def add_weight(entry: WeightEntry):
 
 
   return {"status": "success", "updated_weight": weight}
+
+
+@app.get("/weights")
+async def get_weights():
+    if os.path.exists(weight_log):
+        with open(weight_log, "r") as f:
+            return json.load(f)
+    return [] 

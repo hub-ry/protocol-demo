@@ -7,7 +7,8 @@
   let daysDifference = "Loading...";
 
   onMount(async () => {
-    const res = await fetch("http://localhost:5001/weights");
+    //const res = await fetch("http://localhost:5001/weights");
+    const res = await fetch("http://100.89.197.38:5000/weights");
     weights = await res.json();
     // Set firstDate after data loads
     if (weights.length > 0) {

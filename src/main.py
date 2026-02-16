@@ -54,5 +54,4 @@ async def get_weights():
             return json.load(f)
     return [] 
 
-
-app.mount("/", StaticFiles(directory="./frontend/.svelte-kit/output/client", html=True), name="static")
+app.mount("/", StaticFiles(directory="./frontend/build", html=True), name="static")

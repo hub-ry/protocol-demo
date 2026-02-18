@@ -2,8 +2,6 @@
 
 venv
 
-data/
-
 __pycache__/
 
 auth.env

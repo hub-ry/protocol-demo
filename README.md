@@ -28,6 +28,17 @@ I will graph this data and analyze the results.
 - Tailscale + Server for network tunnelling and recieving data
 
 ---
+
+### Demo (GitHub Pages)
+
+A static demo is deployed at:
+
+**https://hub-ry.github.io/protocol-demo/**
+
+The demo uses embedded sample data. To run the full app with your own backend (e.g. local or Tailscale server), set `VITE_API_URL` when building or running the frontend (e.g. `VITE_API_URL=http://localhost:5000` or your server URL).
+
+---
+
 Personal Notes:
 
 ``venv/bin/uvicorn src.main:app --host 0.0.0.0 --port 5000``

@@ -64,6 +64,13 @@
       0 4px 6px rgba(0, 0, 0, 0.3),
       0 1px 3px rgba(0, 0, 0, 0.2);
   }
+  @media (max-width: 768px) {
+    .stats-box {
+      width: 100%;
+      max-width: 100%;
+      min-height: 200px;
+    }
+  }
 
   .stat-button {
     position: relative;

@@ -42,7 +42,6 @@
     border: 0.01px solid rgb(98, 101, 103);
     border-radius: 3px;
     width: 80vw;
-
     margin: auto;
     margin-top: 1vh;
     margin-bottom: 15vh;
@@ -56,11 +55,20 @@
   }
   .cards {
     display: flex;
+    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
     max-width: 80vw;
     margin-left: 5vw;
     margin-right: 5vw;
     margin: auto;
+  }
+  /* Only stack on small viewports (e.g. tablet portrait / phone) */
+  @media (max-width: 768px) {
+    .cards {
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 95vw;
+    }
   }
 </style>

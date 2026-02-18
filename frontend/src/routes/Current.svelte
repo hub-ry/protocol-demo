@@ -68,7 +68,7 @@
 
 <div class="current-box hover:brightness-110 transition">
   <div class="relative h-full p-4">
-    <div class="h-[400px]">
+    <div class="chart-container">
       <canvas bind:this={chartCanvas}></canvas>
     </div>
     <p class="absolute right-0 bottom-0 pr-2 text-gray-600">Current</p>
@@ -85,5 +85,19 @@
     box-shadow:
       0 4px 6px rgba(0, 0, 0, 0.3),
       0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  .chart-container {
+    height: 400px;
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    .current-box {
+      width: 100%;
+      max-width: 100%;
+      min-height: 280px;
+    }
+    .chart-container {
+      height: 280px;
+    }
   }
 </style>

@@ -1,9 +1,11 @@
 .venv
-
 venv
-
 __pycache__/
-
 auth.env
 .env
 
+# Frontend build artifacts
+frontend/build/
+frontend/dist/
+frontend/node_modules/
+frontend/.svelte-kit/

@@ -14,8 +14,8 @@
     if (weights.length > 0) {
       firstDate = weights[0].date;
       currDate = new Date();
-      currDate = new Date().toLocaleDateString(); // e.g., "2/15/2026"
-      currDate = new Date().toISOString().split("T")[0]; // e.g., "2026-02-15"
+      currDate = new Date().toLocaleDateString();
+      currDate = new Date().toISOString().split("T")[0];
       const start = new Date(firstDate);
       const end = new Date(currDate);
       daysDifference = Math.floor((end - start) / (1000 * 60 * 60 * 24));
@@ -36,13 +36,13 @@
       <p class="stat-button text-yellow-400">Days Elapsed:</p>
       <p class="stat-button text-yellow-400">{daysDifference}</p>
       <p class="stat-button text-yellow-400">Status:</p>
-      <p class="stat-button text-yellow-400">Cutting</p>
+      <p class="stat-button text-yellow-400">Weight-Loss</p>
       <p class="stat-button text-yellow-400">current-weight:</p>
       <p class="stat-button text-yellow-400">
         {latestWeight?.weight || "--"} lbs
       </p>
       <p class="stat-button text-yellow-400">goal-weight</p>
-      <p class="stat-button text-yellow-400">200 lbs</p>
+      <p class="stat-button text-yellow-400">demo lbs</p>
     </div>
 
     <p class="absolute right-0 bottom-0 pr-2 text-gray-600">stats</p>

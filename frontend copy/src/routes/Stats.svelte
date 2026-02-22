@@ -6,7 +6,7 @@
   let firstDate = "Loading...";
   let currDate = "Loading...";
   let daysDifference = "Loading...";
-  let goalWeight = 188;
+  let goalWeight = 150;
 
   onMount(async () => {
     weights = await getWeights();
@@ -52,7 +52,7 @@
       </div>
       <div class="stat-row">
         <dt class="stat-label">Status</dt>
-        <dd class="stat-value stat-value--badge">Weight loss</dd>
+        <dd class="stat-value stat-value--badge">Weight Gain</dd>
       </div>
     </dl>
   </div>

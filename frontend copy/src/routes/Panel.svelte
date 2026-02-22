@@ -4,15 +4,12 @@
   import Upper from "./Upper.svelte";
   import Lower from "./Lower.svelte";
   import { onMount } from "svelte";
-  import { getConfig } from "$lib/config.js";
 
   let currentTime = "";
-  let userName = "demo-user";
+  const userName = "ryan";
   let mainView = "weight";
 
-  onMount(async () => {
-    const config = await getConfig();
-    userName = config.userName;
+  onMount(() => {
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);

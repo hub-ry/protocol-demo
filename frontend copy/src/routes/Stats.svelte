@@ -1,17 +1,14 @@
 <script>
   import { onMount } from "svelte";
   import { getWeights } from "$lib/weights.js";
-  import { getConfig } from "$lib/config.js";
 
   let weights = [];
   let firstDate = "Loading...";
   let currDate = "Loading...";
   let daysDifference = "Loading...";
-  let goalWeight = 150;
+  const goalWeight = 150;
 
   onMount(async () => {
-    const config = await getConfig();
-    goalWeight = config.goalWeight;
     weights = await getWeights();
     if (weights.length > 0) {
       firstDate = weights[0].date;

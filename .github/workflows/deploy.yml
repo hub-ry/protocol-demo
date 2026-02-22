@@ -31,8 +31,13 @@ jobs:
       - name: Install dependencies
         run: cd frontend && npm ci
 
+      - name: Copy data JSON for static site
+        run: mkdir -p frontend/static && cp data/weight.json data/upper.json data/lower.json frontend/static/
+
       - name: Build
         run: cd frontend && npm run build
+        env:
+          NODE_ENV: production
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

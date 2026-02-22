@@ -1,7 +1,8 @@
 <script>
   import { onMount } from "svelte";
+  import { getLower } from "$lib/lower.js";
 
-  let weights = [];
+  let data = [];
   let chartCanvas;
 
   onMount(async () => {
@@ -9,18 +10,17 @@
     const zoomPlugin = await import("chartjs-plugin-zoom");
     Chart.register(zoomPlugin.default);
 
-    const res = await fetch("http://100.89.197.38:5000/weights");
-    weights = await res.json();
+    data = await getLower();
 
     if (!chartCanvas) return;
     new Chart(chartCanvas, {
       type: "line",
       data: {
-        labels: weights.map((w) => w.date),
+        labels: data.map((w) => w.date),
         datasets: [
           {
-            label: "Weight",
-            data: weights.map((w) => w.weight),
+            label: "Squat",
+            data: data.map((w) => w.value),
             borderColor: "rgb(234, 179, 8)",
             backgroundColor: "rgba(234, 179, 8, 0.1)",
             tension: 0.4,

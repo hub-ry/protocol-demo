@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
+		"prebuild": "mkdir -p static && cp ../data/weight.json ../data/upper.json ../data/lower.json static/ 2>/dev/null || true",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''"

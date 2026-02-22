@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { getWeights } from "$lib/weights.js";
 
   let weights = [];
   let firstDate = "Loading...";
@@ -8,8 +9,7 @@
   let goalWeight = 188;
 
   onMount(async () => {
-    const res = await fetch("http://100.89.197.38:5000/weights");
-    weights = await res.json();
+    weights = await getWeights();
     if (weights.length > 0) {
       firstDate = weights[0].date;
       currDate = new Date().toISOString().split("T")[0];

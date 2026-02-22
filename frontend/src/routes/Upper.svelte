@@ -1,28 +1,26 @@
 <script>
   import { onMount } from "svelte";
+  import { getUpper } from "$lib/upper.js";
 
-  let weights = [];
+  let data = [];
   let chartCanvas;
 
   onMount(async () => {
-    // Import Chart.js only in browser
     const { Chart } = await import("chart.js/auto");
     const zoomPlugin = await import("chartjs-plugin-zoom");
 
     Chart.register(zoomPlugin.default);
 
-    //const res = await fetch("http://localhost:5001/weights");
-    const res = await fetch("http://100.89.197.38:5000/weights");
-    weights = await res.json();
+    data = await getUpper();
 
     new Chart(chartCanvas, {
       type: "line",
       data: {
-        labels: weights.map((w) => w.date),
+        labels: data.map((w) => w.date),
         datasets: [
           {
-            label: "Weight",
-            data: weights.map((w) => w.weight),
+            label: "Bench press",
+            data: data.map((w) => w.value),
             borderColor: "rgb(234, 179, 8)",
             backgroundColor: "rgba(234, 179, 8, 0.1)",
             tension: 0.4,

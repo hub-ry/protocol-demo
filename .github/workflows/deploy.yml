@@ -32,7 +32,7 @@ jobs:
         run: cd frontend && npm ci
 
       - name: Copy data JSON for static site
-        run: mkdir -p frontend/static && cp data/weight.json data/upper.json data/lower.json frontend/static/
+        run: mkdir -p frontend/static && cp data/weight.json data/upper.json data/lower.json data/config.json frontend/static/
 
       - name: Build
         run: cd frontend && npm run build

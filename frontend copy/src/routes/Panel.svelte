@@ -10,7 +10,7 @@
   let mainView = "weight";
 
   // hardcode for now bc i am the only user
-  userName = "ryan";
+  userName = "demo-user";
 
   onMount(() => {
     updateTime();

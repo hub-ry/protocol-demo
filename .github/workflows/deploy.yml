@@ -26,23 +26,23 @@ jobs:
         with:
           node-version: "22"
           cache: "npm"
-          cache-dependency-path: "frontend/package-lock.json"
+          cache-dependency-path: "frontend copy/package-lock.json"
 
       - name: Install dependencies
-        run: cd frontend && npm ci
+        run: cd "frontend copy" && npm ci
 
       - name: Copy data JSON for static site
-        run: mkdir -p frontend/static && cp data/weight.json data/upper.json data/lower.json frontend/static/
+        run: mkdir -p "frontend copy/static" && cp data/weight.json data/upper.json data/lower.json "frontend copy/static/"
 
       - name: Build
-        run: cd frontend && npm run build
+        run: cd "frontend copy" && npm run build
         env:
           NODE_ENV: production
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "frontend/build"
+          path: "frontend copy/build"
 
   deploy:
     environment:

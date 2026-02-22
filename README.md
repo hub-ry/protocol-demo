@@ -5,15 +5,15 @@
 The vision of this application is to track as much data about myself as possible while learning new tech stacks.
 
 #### Data I will collect
+Complete:
 - Body Weight
-- Sleep Habits
-- Reps and Weight of gym exercises
-- Nutrition
+- New "Bests" in the Gym
+Maybe One Day:
+- Sleep 
+- Basically anything is possible
 
-
-#### Graphing and gathering data
-I will graph this data and analyze the results.
-
+#### Why this format for a gym app?
+- The gym app market is very saturated, the idea behind privatizing my application was purely for the excused to use a dedicated linux pc, tailscale, and to get comfortable with real infrastructure.
 
 #### Tech Stack
 
